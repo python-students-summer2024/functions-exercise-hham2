@@ -4,7 +4,7 @@ The app allows students to virtually roll two dice. The values of the dice will 
 Students are told whether their answer was correct or not.
 """
 
-import app_functions
+from app_functions import *
 
 
 def main():
@@ -23,6 +23,18 @@ def main():
     print("Welcome to the Math App!!!")
     print("")  # line break
     ### write code to complete this function BELOW here ###
+    die_1 = roll_die()
+    die_2 = roll_die()
+    questiontype = get_question_type()
+    print_question(die_1, die_2, questiontype)
+    response = input_answer()
+    if response == -1:
+        print_error_message()
+    else:
+        if is_correct_answer(die_1, die_2, questiontype, response) is True:
+            print_congratulations(questiontype)
+        else:
+            print_correct_answer(die_1, die_2, questiontype)
 
     ### write code to complete this function ABOVE here ###
     print("")  # line break
